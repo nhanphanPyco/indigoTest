@@ -1,4 +1,4 @@
-import { Dimensions, View } from 'react-native'
+import { Dimensions, View, Image } from 'react-native'
 import glamorous from 'glamorous-native'
 
 import color from '../../themes/colors'
@@ -14,7 +14,7 @@ const Wrapper = glamorous(View)({
 const UserInfo = glamorous(View)({
   width: width - 32,
   height: width,
-  backgroundColor: color.whiteGray
+  backgroundColor: 'blue'
 })
 
 const HeaderView = glamorous(View)({
@@ -40,14 +40,25 @@ const HeaderProfile = glamorous(View)({
   justifyContent: 'flex-end',
 })
 
-const Avatar = glamorous(View)({
+const AvatarView = glamorous(View)({
   width: 120,
   height: 120,
-  backgroundColor: color.green,
+  backgroundColor: color.white,
   position: 'absolute',
   left: width/2-84,
   bottom: -30,
-  borderRadius:60
+  borderRadius:60,
+  justifyContent:'center',
+  alignItems:'center',
+  borderColor:color.textGray,
+  borderWidth:1,
+  zIndex:10
+})
+
+const Avatar = glamorous(Image)({
+  width: 110,
+  height: 110,
+  borderRadius:55
 })
 
 const Line = glamorous(View)({
@@ -58,9 +69,12 @@ const Line = glamorous(View)({
 
 const Info = glamorous(View)({
   width: '100%',
-  height: '45%',
-  backgroundColor: color.green
+  height: '55%',
 })
 
+const styles = {
 
-export { Wrapper, UserInfo, HeaderView, Profile, HeaderProfile, Line, Info, Avatar }
+}
+
+
+export { Wrapper, UserInfo, HeaderView, Profile, HeaderProfile, Line, Info, AvatarView, Avatar }
