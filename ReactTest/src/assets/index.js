@@ -11,9 +11,14 @@ const passwordActive = require('./password-active.png');
 const phone = require('./phone.png');
 const phoneActive = require('./phone-active.png');
 
-// Navigation
-const homeIcon = require('./TabBars/home.png');
-const favouriteIcon = require('./TabBars/heart.png');
+
+const bottomTabs = [
+  { icon: account, iconActive: accountActive },
+  { icon: birthday, iconActive: birthdayActive },
+  { icon: location, iconActive: locationActive },
+  { icon: phone, iconActive: phoneActive },
+  { icon: password, iconActive: passwordActive },
+]
 
 export default {
   account,
@@ -28,8 +33,5 @@ export default {
   passwordActive,
   phone,
   phoneActive,
-  navigation: {
-    home: homeIcon,
-    favourite: favouriteIcon,
-  },
+  bottomTabs
 };

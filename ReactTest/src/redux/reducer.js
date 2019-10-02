@@ -1,11 +1,9 @@
-// @flow
 import { combineReducers } from 'redux'
 
-import { counterReducers } from '../demoSaga/demo'
-
+import user from './reducers/user.reducer'
 
 const rootReducers = {
-  counterReducers: counterReducers
+  user
 }
 const reducer = combineReducers(rootReducers)
 

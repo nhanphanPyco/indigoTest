@@ -1,28 +1,40 @@
-import { connect } from 'react-redux';
+import React from 'react'
+import { connect } from 'react-redux'
+import {
+  compose,
+  withHandlers,
+  lifecycle
+} from 'recompose'
 
-import { decreaseAction, increaseAction } from '../../demoSaga/demo'
+import { getRandomUser } from '../../redux/actions/getRandomUser.action'
 
 import HomeView from './Home.view'
 
+
+const handlers = {
+
+}
+
 const mapStateToProps = (state) => {
-  console.log(state)
   return {
-    times: state.counterReducers ? state.counterReducers : 0
   }
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onDecrement: (step) => {
-      dispatch(decreaseAction(step));
+const mapDispatchToProps = (dispatch) => ({
+  getRandomUser: () => dispatch(getRandomUser())
+})
+
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
+  withHandlers(handlers),
+  lifecycle({
+    componentWillMount() {
     },
-    onIncrement: (step) => {
-      dispatch(increaseAction(step));
+    componentDidMount() {
+      this.props.getRandomUser()
     }
-  };
-}
-
-
-const HomeContainer = connect(mapStateToProps, mapDispatchToProps)(HomeView);
-
-export default HomeContainer;
+  })
+)(HomeView)

@@ -4,9 +4,12 @@ import React from 'react'
 import { Dimensions, View, Text, TouchableOpacity, Image } from 'react-native'
 import Swiper from 'react-native-deck-swiper'
 
+import ASSETS from '../../assets'
+
 import { Wrapper, UserInfo, HeaderView, Profile, HeaderProfile, Line, Info, AvatarView, Avatar } from './Home.styles'
 
-const { HEIGHT, WIDTH } = Dimensions.get('window');
+
+// const { HEIGHT, WIDTH } = Dimensions.get('window');
 
 
 const data = [{
@@ -58,10 +61,10 @@ const data = [{
   picture: "http://api.randomuser.me/portraits/men/56.jpg"
 }]
 
-const renderCard = (card) => {
-  console.log('object: ', card);
+
+const renderCard = (card, cardIndex) => {
   return (
-    <Profile>
+    <Profile key={`user-${cardIndex}`}>
       <HeaderProfile>
         <Line />
         <AvatarView>
@@ -69,11 +72,17 @@ const renderCard = (card) => {
         </AvatarView>
       </HeaderProfile>
       <Info>
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <Text style={{ color: '#959299', fontSize: 16 }}>My address is</Text>
-          <Text style={{ color: 'rgba(44, 46, 49, 0.9)', fontSize: 24, marginTop:5 }}>6071 dogwood ave</Text>
+        <View style={{ flex: 1, justifyContent: 'flex-end', alignItems: 'center' }}>
+          <Text style={{ color: '#959299', fontSize: 18 }}>My address is</Text>
+          <Text style={{ color: 'rgba(44, 46, 49, 0.9)', fontSize: 24,fontWeight:'700', marginTop: 3 }}>6071 dogwood ave</Text>
         </View>
-        <View style={{ flex: 1 }}></View>
+        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', }}>
+          {ASSETS.bottomTabs.map((tab, index) => {
+            return (
+              <Image key={index} style={{ width: 40, height: 40, margin: 5 }} resizeMode='contain' source={tab.icon} />
+            )
+          })}
+        </View>
       </Info>
     </Profile>
   );
@@ -84,7 +93,7 @@ const HomeView = (props) => {
       <UserInfo>
         <Swiper
           cards={data}
-          renderCard={card => renderCard(card)}
+          renderCard={(card, cardIndex) => renderCard(card, cardIndex)}
           onSwiped={(cardIndex) => { console.log(cardIndex) }}
           cardIndex={0}
           cardVerticalMargin={0}

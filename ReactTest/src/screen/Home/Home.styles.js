@@ -41,24 +41,23 @@ const HeaderProfile = glamorous(View)({
 })
 
 const AvatarView = glamorous(View)({
-  width: 120,
-  height: 120,
+  width: 160,
+  height: 160,
   backgroundColor: color.white,
   position: 'absolute',
-  left: width/2-84,
-  bottom: -30,
-  borderRadius:60,
-  justifyContent:'center',
-  alignItems:'center',
-  borderColor:color.textGray,
-  borderWidth:1,
-  zIndex:10
+  left: width / 2 - 104,
+  bottom: -50,
+  borderRadius: 80,
+  justifyContent: 'center',
+  alignItems: 'center',
+  borderColor: color.textGray,
+  borderWidth: 1,
 })
 
 const Avatar = glamorous(Image)({
-  width: 110,
-  height: 110,
-  borderRadius:55
+  width: 150,
+  height: 150,
+  borderRadius: 75
 })
 
 const Line = glamorous(View)({
@@ -69,7 +68,7 @@ const Line = glamorous(View)({
 
 const Info = glamorous(View)({
   width: '100%',
-  height: '55%',
+  height: '40%',
 })
 
 const styles = {
