@@ -1,6 +1,15 @@
 import axios from 'axios'
-// import { defaultTo, pluck, compose, pathOr } from 'ramda'
-// import { isNonEmptyString } from 'ramda-adjunct'
+import {
+  prop,
+  path,
+  assoc,
+  compose,
+  replace as _replace,
+  pluck,
+  pathOr
+} from 'ramda'
+import { isString } from 'ramda-adjunct'
+
 
 import constants from '../constants'
 
@@ -10,29 +19,45 @@ const requestConfig = {
   timeout: 30000, // 30s
 }
 
-// const transformError = (e) => {
-//   // console.log('ERROR API NOW =', e)
-//   const getErrors = () => {
-//     if (!e.response || e.code === 'ECONNABORTED') {
-//       return ['TIMED_OUT']
-//     }
+const transformResponse = (response) => {
+  const data = prop('data')(response)
+  const serverDateTime = path(['headers', 'date'], response)
 
-//     return compose(
-//       pluck('code'),
-//       pathOr([{ code: 'INVALID_FORMAT' }], ['response', 'data', 'errors'])
-//     )(e)
-//   }
-//   const newError = {
-//     ...e,
-//     response: {
-//       data: getErrors()
-//     }
-//   }
+  if (isString(data)) {
+    return {
+      data,
+      serverDateTime
+    }
+  }
 
-//   return Promise.reject(newError)
-// }
+  return assoc('serverDateTime', serverDateTime, data)
+}
+
+const transformError = (e) => {
+
+  const getErrors = () => {
+    if (!e.response || e.code === 'ECONNABORTED') {
+      return ['TIMED_OUT']
+    }
+
+    return compose(
+      pluck('code'),
+      pathOr([{ code: 'INVALID_FORMAT' }], ['response', 'data', 'errors'])
+    )(e)
+  }
+  const newError = {
+    ...e,
+    response: {
+      data: getErrors()
+    }
+  }
+
+  return Promise.reject(newError)
+}
+
 
 const request = axios.create(requestConfig)
 
+request.interceptors.response.use(transformResponse, transformError)
 
 export default request

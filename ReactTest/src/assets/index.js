@@ -13,11 +13,11 @@ const phoneActive = require('./phone-active.png');
 
 
 const bottomTabs = [
-  { icon: account, iconActive: accountActive },
-  { icon: birthday, iconActive: birthdayActive },
-  { icon: location, iconActive: locationActive },
-  { icon: phone, iconActive: phoneActive },
-  { icon: password, iconActive: passwordActive },
+  { name: 'ACCOUNT', icon: account, iconActive: accountActive },
+  { name: 'BIRTHDAY', icon: birthday, iconActive: birthdayActive },
+  { name: 'LOCATION', icon: location, iconActive: locationActive },
+  { name: 'PHONE', icon: phone, iconActive: phoneActive },
+  { name: 'PASSWORD', icon: password, iconActive: passwordActive },
 ]
 
 export default {

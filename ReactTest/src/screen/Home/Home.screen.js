@@ -2,21 +2,24 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {
   compose,
-  withHandlers,
-  lifecycle
+  withHandlers
 } from 'recompose'
 
 import { getRandomUser } from '../../redux/actions/getRandomUser.action'
+
 
 import HomeView from './Home.view'
 
 
 const handlers = {
-
+  // TRIGGER_TABS: triggerTabsBottom
 }
 
 const mapStateToProps = (state) => {
+  console.log('STATE: ', state);
   return {
+    loading: state.users.loading,
+    users: state.users.users
   }
 };
 
@@ -29,12 +32,5 @@ export default compose(
     mapStateToProps,
     mapDispatchToProps
   ),
-  withHandlers(handlers),
-  lifecycle({
-    componentWillMount() {
-    },
-    componentDidMount() {
-      this.props.getRandomUser()
-    }
-  })
+  withHandlers(handlers)
 )(HomeView)

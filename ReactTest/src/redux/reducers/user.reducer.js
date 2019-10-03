@@ -2,7 +2,6 @@ import ACTION_TYPE from '../constans'
 
 const initialState = {
   users: [],
-  myFavourite:[],
   loading: false,
   error: null
 }
@@ -19,8 +18,7 @@ const user = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        user: action.payload.user,
-        myFavourite: action.payload.myFavourite
+        users: action.payload,
       };
 
     case ACTION_TYPE.GET_RANDOM_USER_FAILED:
