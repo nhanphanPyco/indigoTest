@@ -1,10 +1,18 @@
 import ACTION_TYPE from '../constans'
 
 
-const getRandomUser = () => ({ type: ACTION_TYPE.GET_RANDOM_USER })
+const getRandomUser = payload => ({ 
+  type: ACTION_TYPE.GET_RANDOM_USER,
+  payload
+ })
 
 const getRandomUserSuccess = payload => ({
   type: ACTION_TYPE.GET_RANDOM_USER_SUCCESS,
+  payload
+})
+
+const AddUserMyFavouriteSuccess = payload => ({
+  type: ACTION_TYPE.ADD_MY_FAVOURITE,
   payload
 })
 
@@ -13,4 +21,4 @@ const getRandomUserFailed = payload => ({
   payload
 })
 
-export { getRandomUser, getRandomUserSuccess, getRandomUserFailed }
+export { getRandomUser, getRandomUserSuccess, AddUserMyFavouriteSuccess, getRandomUserFailed }

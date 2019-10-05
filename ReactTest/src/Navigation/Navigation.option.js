@@ -5,4 +5,10 @@ const stackOptions = {
   }
 }
 
-export default stackOptions
+const tabBarOptions = {
+  labelStyle: {
+    fontSize: 12,
+  },
+}
+
+export { stackOptions, tabBarOptions }

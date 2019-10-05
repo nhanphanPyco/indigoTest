@@ -4,14 +4,24 @@ import API from '../../services/API.services'
 
 import constants from '../constans'
 
-function* getRandomUserSaga() {
+function* getRandomUserSaga(action) {
   try {
     const response = yield API.get()
+
     yield put({
       type: constants.GET_RANDOM_USER_SUCCESS, payload: response.results
-    });
+    })
+
+    if(action.payload==='ADD'){
+      yield put({
+        type: constants.ADD_MY_FAVOURITE, payload: response.results[0]
+      });
+    }
+
   } catch (e) {
-    console.log('error', e);
+    yield put({
+      type: constants.GET_RANDOM_USER_FAILED, payload: e.response
+    })
   }
 }
 

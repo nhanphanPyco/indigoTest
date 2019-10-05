@@ -6,7 +6,8 @@ const constants = {
     LOCATION: 'LOCATION',
     PHONE: 'PHONE',
     PASSWORD: 'PASSWORD'
-  }
+  },
+  MY_FAVOURITE:'My Favourite' 
 }
 
 export default constants
