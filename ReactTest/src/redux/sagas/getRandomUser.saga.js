@@ -1,8 +1,8 @@
-import { call, put, takeLatest } from 'redux-saga/effects'
+import { put, takeLatest } from 'redux-saga/effects'
 
 import API from '../../services/API.services'
 
-import constants from '../constans'
+import constants from '../constants'
 
 function* getRandomUserSaga(action) {
   try {

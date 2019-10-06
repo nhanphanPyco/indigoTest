@@ -1,4 +1,4 @@
-import ACTION_TYPE from '../constans'
+import ACTION_TYPE from '../constants'
 
 
 const myFavourite = (state = [], action) => {
