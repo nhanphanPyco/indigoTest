@@ -17,7 +17,7 @@
     "ramda": "^0.26.1",
     "ramda-adjunct": "^2.21.0",
     "react": "16.9.0",
-    "react-native": "0.61.1",
+    "react-native": "0.62.3",
     "react-native-deck-swiper": "^1.6.7",
     "react-native-gesture-handler": "^1.4.1",
     "react-native-offline": "^5.1.0",
